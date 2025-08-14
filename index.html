@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepCoders - Website Development Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="gradient-blob blob-1"></div>
+        <div class="gradient-blob blob-2"></div>
+        <div class="gradient-blob blob-3"></div>
+        <div class="gradient-blob blob-4"></div>
+    </div>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1 class="logo">DeepCoders</h1>
+                <span class="tagline">Building Digital Excellence</span>
+            </div>
+            <div class="nav-links">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#form" class="nav-link">Get Started</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Transform Your Vision Into
+                    <span class="gradient-text">Digital Reality</span>
+                </h1>
+                <p class="hero-description">
+                    We create stunning, modern websites that captivate your audience and drive results. 
+                    Let's build something extraordinary together.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#form" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Start Your Project
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        <i class="fas fa-play"></i>
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <i class="fas fa-code"></i>
+                    <span>Modern Development</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-palette"></i>
+                    <span>Creative Design</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Responsive</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scroll Down Indicator -->
+        <div class="scroll-indicator">
+            <a href="#services" class="scroll-down-btn">
+                <i class="fas fa-chevron-down"></i>
+                <span>Explore More</span>
+            </a>
+        </div>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Website Development</h3>
+                        <p>Custom websites built with modern technologies and best practices</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>E-commerce Solutions</h3>
+                        <p>Complete online stores with payment integration and inventory management</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile App Development</h3>
+                        <p>Native and cross-platform mobile applications for iOS and Android</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Graphics Designing</h3>
+                        <p>Creative visual designs including logos, branding, and marketing materials</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Photography</h3>
+                        <p>Professional photography services for business, products, and events</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>SEO Optimization</h3>
+                        <p>Boost your online visibility with our SEO strategies</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="form" class="form-section">
+            <div class="container">
+                <div class="form-header">
+                    <h2 class="section-title">Let's Create Your Dream Website</h2>
+                    <p class="section-description">
+                        Tell us about your project and we'll provide you with a custom proposal
+                    </p>
+                </div>
+
+                <form action="https://getform.io/f/aejejovb" method="POST" enctype="multipart/form-data" class="website-form" id="websiteForm">
+                    <!-- Anti-spam honeypot -->
+                    <input type="hidden" name="_gotcha" style="display:none !important">
+                    
+                    <!-- Form Progress Indicator -->
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    
+                    <!-- Step 1: Company Information -->
+                    <div class="form-step active" data-step="1">
+                        <h3 class="step-title">
+                            <i class="fas fa-building"></i>
+                            Company Information
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="companyName">Company Name *</label>
+                                <input type="text" id="companyName" name="company_name" required 
+                                       placeholder="e.g., Acme Corporation">
+                                <div class="form-help">Your business's full legal name</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="industry">Industry *</label>
+                                <select id="industry" name="industry" required>
+                                    <option value="">Select your industry</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="restaurants">Restaurants & Food</option>
+                                    <option value="real-estate">Real Estate</option>
+                                    <option value="education">Education</option>
+                                    <option value="consulting">Consulting</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="non-profit">Non-Profit</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tagline">Business Tagline</label>
+                                <input type="text" id="tagline" name="tagline" 
+                                       placeholder="e.g., Innovation at Your Service">
+                                <div class="form-help">Your company's slogan or motto</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="businessYears">Years in Business</label>
+                                <select id="businessYears" name="business_years">
+                                    <option value="">Select</option>
+                                    <option value="startup">Startup (0-1 years)</option>
+                                    <option value="emerging">Emerging (1-3 years)</option>
+                                    <option value="established">Established (3-10 years)</option>
+                                    <option value="mature">Mature (10+ years)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="targetAudience">Target Audience *</label>
+                            <textarea id="targetAudience" name="target_audience" required 
+                                      placeholder="e.g., Small business owners aged 25-45 looking for digital solutions"></textarea>
+                            <div class="form-help">Describe your ideal customers</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="companyLogo">Company Logo</label>
+                            <div class="file-upload-area">
+                                <input type="file" id="companyLogo" name="company_logo" accept="image/*" class="file-input">
+                                <div class="file-upload-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload your company logo</p>
+                                    <span class="file-upload-help">Supported formats: JPG, PNG, SVG (Max 5MB)</span>
+                                </div>
+                                <div class="file-preview" style="display: none;">
+                                    <img src="" alt="Logo preview" class="logo-preview">
+                                    <button type="button" class="remove-file">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-help">Upload your company logo for brand consistency (optional)</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Contact & Business Details -->
+                    <div class="form-step" data-step="2">
+                        <h3 class="step-title">
+                            <i class="fas fa-address-card"></i>
+                            Contact & Business Details
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactName">Your Name *</label>
+                                <input type="text" id="contactName" name="contact_name" required 
+                                       placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required 
+                                       placeholder="john@company.com">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" 
+                                       placeholder="+1 (555) 123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label for="businessAddress">Business Address</label>
+                                <input type="text" id="businessAddress" name="business_address" 
+                                       placeholder="123 Main St, City, State 12345">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="serviceArea">Service Area *</label>
+                            <select id="serviceArea" name="service_area" required>
+                                <option value="">Select your service area</option>
+                                <option value="local">Local/Regional</option>
+                                <option value="national">National</option>
+                                <option value="international">International</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="socialMedia">Social Media Accounts</label>
+                            <textarea id="socialMedia" name="social_media" 
+                                      placeholder="Instagram: @company, Facebook: /company, LinkedIn: /company"></textarea>
+                            <div class="form-help">List your social media handles</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Website Goals & Features -->
+                    <div class="form-step" data-step="3">
+                        <h3 class="step-title">
+                            <i class="fas fa-bullseye"></i>
+                            Website Goals & Features
+                        </h3>
+                        
+                        <div class="form-group">
+                            <label for="websitePurpose">Primary Website Purpose *</label>
+                            <select id="websitePurpose" name="website_purpose" required>
+                                <option value="">Select primary purpose</option>
+                                <option value="lead-generation">Generate Leads</option>
+                                <option value="online-sales">Online Sales/E-commerce</option>
+                                <option value="brand-awareness">Brand Awareness</option>
+                                <option value="portfolio">Portfolio/Showcase</option>
+                                <option value="information">Information/Resources</option>
+                                <option value="booking">Appointment Booking</option>
+                                <option value="community">Community/Forum</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Required Features (Select all that apply)</label>
+                            <div class="checkbox-grid">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="ecommerce" name="features" value="ecommerce">
+                                    <label for="ecommerce">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        E-commerce Store
+                                    </label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="booking" name="features" value="booking">
+                                    <label for="booking">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        Appointment Booking
+                                    </label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="blog" name="features" value="blog">
+                                    <label for="blog">
+                                        <i class="fas fa-blog"></i>
+                                        Blog/News Section
+                                    </label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="gallery" name="features" value="gallery">
+                                    <label for="gallery">
+                                        <i class="fas fa-images"></i>
+                                        Photo Gallery
+                                    </label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="contact-form" name="features" value="contact-form">
+                                    <label for="contact-form">
+                                        <i class="fas fa-envelope"></i>
+                                        Contact Forms
+                                    </label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="live-chat" name="features" value="live-chat">
+                                    <label for="live-chat">
+                                        <i class="fas fa-comments"></i>
+                                        Live Chat
+                                    </label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="search" name="features" value="search">
+                                    <label for="search">
+                                        <i class="fas fa-search"></i>
+                                        Site Search
+                                    </label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="newsletter" name="features" value="newsletter">
+                                    <label for="newsletter">
+                                        <i class="fas fa-newspaper"></i>
+                                        Newsletter Signup
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="targetActions">What should visitors do on your site? *</label>
+                            <textarea id="targetActions" name="target_actions" required 
+                                      placeholder="e.g., Contact us for quotes, Purchase products, Book appointments, Download resources"></textarea>
+                            <div class="form-help">Describe the main actions you want visitors to take</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Design & Content -->
+                    <div class="form-step" data-step="4">
+                        <h3 class="step-title">
+                            <i class="fas fa-palette"></i>
+                            Design & Content Preferences
+                        </h3>
+                        
+                        <div class="form-group">
+                            <label for="designStyle">Preferred Design Style *</label>
+                            <select id="designStyle" name="design_style" required>
+                                <option value="">Select design style</option>
+                                <option value="modern-minimalist">Modern & Minimalist</option>
+                                <option value="professional-corporate">Professional & Corporate</option>
+                                <option value="creative-artistic">Creative & Artistic</option>
+                                <option value="luxury-elegant">Luxury & Elegant</option>
+                                <option value="friendly-approachable">Friendly & Approachable</option>
+                                <option value="bold-vibrant">Bold & Vibrant</option>
+                                <option value="clean-simple">Clean & Simple</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="brandColors">Brand Colors</label>
+                                <input type="text" id="brandColors" name="brand_colors" 
+                                       placeholder="e.g., Blue (#1E40AF), White (#FFFFFF)">
+                                <div class="form-help">Your company's color palette</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inspirationSites">Inspiration Websites</label>
+                                <input type="url" id="inspirationSites" name="inspiration_sites" 
+                                       placeholder="https://example.com">
+                                <div class="form-help">Websites you like (optional)</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Content Status</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="content-ready" name="content_status" value="ready">
+                                    <label for="content-ready">
+                                        <i class="fas fa-check-circle"></i>
+                                        Content is ready (text, images, etc.)
+                                    </label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="content-partial" name="content_status" value="partial">
+                                    <label for="content-partial">
+                                        <i class="fas fa-clock"></i>
+                                        Some content ready, need help with rest
+                                    </label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="content-help" name="content_status" value="help-needed">
+                                    <label for="content-help">
+                                        <i class="fas fa-hands-helping"></i>
+                                        Need help creating all content
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additionalInfo">Additional Information</label>
+                            <textarea id="additionalInfo" name="additional_info" 
+                                      placeholder="Tell us anything else about your project, special requirements, timeline, budget range, etc."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Form Navigation -->
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary prev-step" style="display: none;">
+                            <i class="fas fa-arrow-left"></i>
+                            Previous
+                        </button>
+                        <button type="button" class="btn btn-primary next-step">
+                            Next
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button type="submit" class="btn btn-primary submit-form" style="display: none;">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Project Request
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Ready to Get Started?</h2>
+                <p class="section-description">
+                    Let's discuss your project and bring your vision to life
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>martinosb2023@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>0530092177</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn Profile</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Fri, 9AM-6PM EST</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>DeepCoders</h3>
+                    <p>Building Digital Excellence</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#form">Get Started</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DeepCoders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
