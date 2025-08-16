@@ -245,7 +245,22 @@ function setupFormSubmission() {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        if (!validateCurrentStep()) {
+        // Validate ALL steps before submission
+        let allStepsValid = true;
+        for (let step = 0; step < totalSteps; step++) {
+            const stepElement = steps[step];
+            const requiredFields = stepElement.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    allStepsValid = false;
+                    showFieldError(field, 'This field is required');
+                }
+            });
+        }
+        
+        if (!allStepsValid) {
+            showValidationMessage('Please fill in all required fields before submitting.');
             return;
         }
 
@@ -260,28 +275,76 @@ function setupFormSubmission() {
         // Add timestamp
         formData.append('submission_date', new Date().toISOString());
         
-        // Submit to getform.io
-        fetch(form.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
+        // Debug: Log form data
+        console.log('Submitting form data:', Object.fromEntries(formData));
+        
+        // Try a simpler submission first
+        submitFormSimple(formData)
+            .then(() => {
                 showSuccessMessage();
+            })
+            .catch(error => {
+                console.error('Simple submission failed:', error);
+                // Fallback to fetch with detailed error handling
+                return submitFormWithFetch(formData);
+            })
+            .catch(error => {
+                console.error('All submission methods failed:', error);
+                showErrorMessage(error.message);
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Project Request';
+                submitBtn.disabled = false;
+                form.classList.remove('form-loading');
+            });
+    });
+}
+
+// Simple form submission using XMLHttpRequest
+function submitFormSimple(formData) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', form.action, true);
+        
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(xhr.response);
             } else {
-                throw new Error('Submission failed');
+                reject(new Error(`HTTP ${xhr.status}: ${xhr.statusText}`));
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            showErrorMessage();
-        })
-        .finally(() => {
-            // Reset button state
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Project Request';
-            submitBtn.disabled = false;
-            form.classList.remove('form-loading');
-        });
+        };
+        
+        xhr.onerror = function() {
+            reject(new Error('Network error occurred'));
+        };
+        
+        xhr.ontimeout = function() {
+            reject(new Error('Request timeout'));
+        };
+        
+        xhr.timeout = 30000; // 30 second timeout
+        xhr.send(formData);
+    });
+}
+
+// Fetch-based submission with detailed error handling
+function submitFormWithFetch(formData) {
+    return fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors'
+    })
+    .then(response => {
+        console.log('Fetch response status:', response.status);
+        
+        if (response.ok || response.status === 200) {
+            return response;
+        } else {
+            return response.text().then(text => {
+                throw new Error(`Fetch failed with status ${response.status}: ${text}`);
+            });
+        }
     });
 }
 
@@ -315,26 +378,55 @@ function showSuccessMessage() {
     formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-function showErrorMessage() {
-    // Show error message
+function showErrorMessage(errorDetails = '') {
+    // Remove any existing error messages
+    const existingError = document.querySelector('.error-message.submission-error');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    // Create error message
     const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message show';
-    errorDiv.style.background = 'rgba(255, 107, 107, 0.2)';
-    errorDiv.style.borderColor = '#ff6b6b';
-    errorDiv.style.color = '#ff6b6b';
+    errorDiv.className = 'error-message submission-error';
+    errorDiv.style.cssText = `
+        background: rgba(255, 107, 107, 0.1);
+        border: 1px solid #ff6b6b;
+        border-radius: 12px;
+        color: #ff6b6b;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        text-align: center;
+        animation: slideInDown 0.3s ease;
+    `;
+    
     errorDiv.innerHTML = `
-        <div style="text-align: center; padding: 1rem;">
-            <i class="fas fa-exclamation-triangle" style="margin-right: 0.5rem;"></i>
+        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+        <h4 style="margin-bottom: 0.5rem;">Submission Failed</h4>
+        <p style="margin-bottom: 1rem; opacity: 0.9;">
             There was an error submitting your form. Please try again or contact us directly.
+        </p>
+        ${errorDetails ? `<small style="opacity: 0.7;">Error details: ${errorDetails}</small>` : ''}
+        <div style="margin-top: 1rem;">
+            <button onclick="this.parentElement.parentElement.remove()" 
+                    style="background: #ff6b6b; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;">
+                Try Again
+            </button>
         </div>
     `;
     
-    form.appendChild(errorDiv);
+    // Insert before form navigation
+    const formNavigation = document.querySelector('.form-navigation');
+    formNavigation.parentElement.insertBefore(errorDiv, formNavigation);
     
-    // Remove error message after 5 seconds
+    // Scroll to error message
+    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Auto-remove after 10 seconds
     setTimeout(() => {
-        errorDiv.remove();
-    }, 5000);
+        if (errorDiv && errorDiv.parentElement) {
+            errorDiv.remove();
+        }
+    }, 10000);
 }
 
 // Smooth scrolling for navigation links
