@@ -80,6 +80,7 @@ function validateCurrentStep() {
     const currentStepElement = steps[currentStep];
     const requiredFields = currentStepElement.querySelectorAll('[required]');
     let isValid = true;
+    let firstInvalidField = null;
 
     requiredFields.forEach(field => {
         const errorElement = field.nextElementSibling?.classList.contains('error-message') 
@@ -94,24 +95,50 @@ function validateCurrentStep() {
         if (!field.value.trim()) {
             showFieldError(field, 'This field is required');
             isValid = false;
+            if (!firstInvalidField) {
+                firstInvalidField = field;
+            }
         } else if (field.type === 'email' && !isValidEmail(field.value)) {
             showFieldError(field, 'Please enter a valid email address');
             isValid = false;
+            if (!firstInvalidField) {
+                firstInvalidField = field;
+            }
         } else {
             removeFieldError(field);
         }
     });
 
+    // If validation failed, scroll to the first invalid field and focus on it
+    if (!isValid && firstInvalidField) {
+        scrollToField(firstInvalidField);
+        
+        // Add a brief delay before focusing to ensure smooth scrolling
+        setTimeout(() => {
+            firstInvalidField.focus();
+            
+            // Add shake animation to draw attention
+            firstInvalidField.style.animation = 'shake 0.5s ease-in-out';
+            setTimeout(() => {
+                firstInvalidField.style.animation = '';
+            }, 500);
+        }, 300);
+        
+        // Show validation message
+        showValidationMessage('Please fill in all required fields before proceeding.');
+    }
+
     return isValid;
 }
 
 function showFieldError(field, message) {
+    field.classList.add('error');
     field.style.borderColor = '#ff6b6b';
     field.style.boxShadow = '0 0 20px rgba(255, 107, 107, 0.3)';
     
     const errorElement = document.createElement('div');
     errorElement.className = 'error-message';
-    errorElement.textContent = message;
+    errorElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
     errorElement.style.color = '#ff6b6b';
     errorElement.style.fontSize = '0.9rem';
     errorElement.style.marginTop = '0.5rem';
@@ -121,6 +148,7 @@ function showFieldError(field, message) {
 }
 
 function removeFieldError(field) {
+    field.classList.remove('error');
     field.style.borderColor = 'rgba(255, 255, 255, 0.2)';
     field.style.boxShadow = 'none';
     
@@ -133,6 +161,49 @@ function removeFieldError(field) {
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+// Scroll to invalid field with smooth animation
+function scrollToField(field) {
+    const fieldRect = field.getBoundingClientRect();
+    const formSection = document.querySelector('.form-section');
+    const formSectionRect = formSection.getBoundingClientRect();
+    
+    // Calculate the position relative to the form section
+    const scrollTop = window.pageYOffset + fieldRect.top - 150; // 150px offset from top
+    
+    window.scrollTo({
+        top: scrollTop,
+        behavior: 'smooth'
+    });
+}
+
+// Show validation message
+function showValidationMessage(message) {
+    // Remove existing validation message
+    const existingMessage = document.querySelector('.validation-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    // Create new validation message
+    const messageElement = document.createElement('div');
+    messageElement.className = 'validation-message';
+    messageElement.innerHTML = `
+        <i class="fas fa-exclamation-triangle"></i>
+        ${message}
+    `;
+    
+    // Insert before form navigation
+    const formNavigation = document.querySelector('.form-navigation');
+    formNavigation.parentElement.insertBefore(messageElement, formNavigation);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        if (messageElement && messageElement.parentElement) {
+            messageElement.remove();
+        }
+    }, 5000);
 }
 
 // Setup form validation

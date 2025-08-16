@@ -561,6 +561,59 @@ body {
     backdrop-filter: blur(10px);
 }
 
+/* Form validation styling */
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.validation-message {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 87, 51, 0.1) 100%);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    color: #ff6b6b;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    backdrop-filter: blur(10px);
+    animation: slideInDown 0.3s ease;
+}
+
+.validation-message i {
+    font-size: 1.2rem;
+    color: #ff8a65;
+}
+
+/* Animations */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 /* Additional requirements section styling */
 .additional-requirements {
     margin-top: 2rem;
@@ -720,6 +773,15 @@ body {
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
     backdrop-filter: blur(15px);
+}
+
+/* Error states for form fields */
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+    border-color: #ff6b6b !important;
+    background: rgba(255, 107, 107, 0.1) !important;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3) !important;
 }
 
 .form-group input::placeholder,
