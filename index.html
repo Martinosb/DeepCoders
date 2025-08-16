@@ -175,6 +175,7 @@
                                     <option value="non-profit">Non-Profit</option>
                                     <option value="other">Other</option>
                                 </select>
+                                <input type="text" id="industryOther" name="industry_other" placeholder="If Other, please specify" style="display:none;margin-top:0.5rem;" class="other-input">
                             </div>
                         </div>
 
@@ -193,7 +194,9 @@
                                     <option value="emerging">Emerging (1-3 years)</option>
                                     <option value="established">Established (3-10 years)</option>
                                     <option value="mature">Mature (10+ years)</option>
+                                    <option value="other">Other</option>
                                 </select>
+                                <input type="text" id="businessYearsOther" name="business_years_other" placeholder="If Other, please specify" style="display:none;margin-top:0.5rem;" class="other-input">
                             </div>
                         </div>
 
@@ -264,7 +267,9 @@
                                 <option value="local">Local/Regional</option>
                                 <option value="national">National</option>
                                 <option value="international">International</option>
+                                <option value="other">Other</option>
                             </select>
+                            <input type="text" id="serviceAreaOther" name="service_area_other" placeholder="If Other, please specify" style="display:none;margin-top:0.5rem;" class="other-input">
                         </div>
 
                         <div class="form-group">
@@ -293,7 +298,9 @@
                                 <option value="information">Information/Resources</option>
                                 <option value="booking">Appointment Booking</option>
                                 <option value="community">Community/Forum</option>
+                                <option value="other">Other</option>
                             </select>
+                            <input type="text" id="websitePurposeOther" name="website_purpose_other" placeholder="If Other, please specify" style="display:none;margin-top:0.5rem;" class="other-input">
                         </div>
 
                         <div class="form-group">
@@ -384,7 +391,9 @@
                                 <option value="friendly-approachable">Friendly & Approachable</option>
                                 <option value="bold-vibrant">Bold & Vibrant</option>
                                 <option value="clean-simple">Clean & Simple</option>
+                                <option value="other">Other</option>
                             </select>
+                            <input type="text" id="designStyleOther" name="design_style_other" placeholder="If Other, please specify" style="display:none;margin-top:0.5rem;" class="other-input">
                         </div>
 
                         <div class="form-row">
@@ -429,10 +438,24 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="additionalInfo">Additional Information</label>
-                            <textarea id="additionalInfo" name="additional_info" 
-                                      placeholder="Tell us anything else about your project, special requirements, timeline, budget range, etc."></textarea>
+                        <div class="form-group additional-requirements">
+                            <label for="additionalRequirements">
+                                <i class="fas fa-lightbulb"></i>
+                                Additional Requirements & Special Requests
+                            </label>
+                            <div class="form-help">Tell us about any specific features, functionality, design elements, or special requirements for your website. The more details you provide, the better we can serve you!</div>
+                            <textarea id="additionalRequirements" name="additional_requirements" 
+                                      placeholder="Examples:
+• Specific animations or effects you'd like
+• Integration with third-party services (CRM, payment systems, etc.)
+• Accessibility requirements
+• SEO preferences
+• Content management needs
+• Security considerations
+• Performance requirements
+• Any other special features or functionality
+
+Feel free to be as detailed as possible - this helps us create exactly what you envision!"></textarea>
                         </div>
                     </div>
 

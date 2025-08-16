@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupFormSubmission();
     setupFileUpload();
     enhanceDropdowns();
+    setupOtherFields();
 });
 
 // Form step navigation
@@ -579,7 +580,47 @@ function enhanceDropdowns() {
     });
 }
 
-// Auto-save form data to localStorage
+// Show/hide 'Other' input fields for inclusivity
+function setupOtherFields() {
+    const dropdowns = [
+        {select: 'industry', other: 'industryOther'},
+        {select: 'businessYears', other: 'businessYearsOther'},
+        {select: 'serviceArea', other: 'serviceAreaOther'},
+        {select: 'websitePurpose', other: 'websitePurposeOther'},
+        {select: 'designStyle', other: 'designStyleOther'}
+    ];
+    dropdowns.forEach(({select, other}) => {
+        const selectEl = document.getElementById(select);
+        const otherEl = document.getElementById(other);
+        if (selectEl && otherEl) {
+            selectEl.addEventListener('change', function() {
+                if (this.value === 'other') {
+                    otherEl.style.display = 'block';
+                    otherEl.required = true;
+                } else {
+                    otherEl.style.display = 'none';
+                    otherEl.required = false;
+                    otherEl.value = '';
+                }
+            });
+        }
+    });
+}
+
+// Initialize form
+const originalDOMContentLoaded = document.addEventListener;
+document.addEventListener('DOMContentLoaded', function() {
+    updateFormDisplay();
+    setupFormValidation();
+    setupSmoothScrolling();
+    setupHeaderScroll();
+    setupFormSubmission();
+    setupFileUpload();
+    enhanceDropdowns();
+    setupOtherFields();
+});
+
+// Form auto-save and load
 function saveFormData() {
     const formData = new FormData(form);
     const data = {};
