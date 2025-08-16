@@ -1184,11 +1184,62 @@ body {
         width: 100%;
     }
     
-    .hero-buttons {
-        justify-content: center;
+    /* Mobile floating cards adjustments */
+    .floating-card {
+        padding: 1rem;
+        font-size: 0.8rem;
+        width: 120px;
+        height: auto;
+        min-height: 80px;
+        animation: floatCardMobile 4s infinite ease-in-out;
     }
     
-    .scroll-indicator {
+    .floating-card i {
+        font-size: 1.2rem;
+    }
+    
+    .card-1 {
+        top: 15%;
+        left: 8%;
+        transform: scale(0.75);
+    }
+    
+    .card-2 {
+        top: 45%;
+        right: 8%;
+        transform: scale(0.75);
+    }
+    
+    .card-3 {
+        bottom: 15%;
+        left: 35%;
+        transform: scale(0.75);
+    }
+    
+    /* Reduced animation for mobile to prevent overlap */
+    @keyframes floatCardMobile {
+        0%, 100% {
+            transform: scale(0.75) translateY(0);
+        }
+        50% {
+            transform: scale(0.75) translateY(-10px);
+        }
+    }
+    
+    /* Hide floating cards on very small screens to prevent clutter */
+    @media (max-width: 480px) {
+        .floating-card {
+            display: none;
+        }
+        
+        .hero-visual {
+            height: 200px;
+        }
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }    .scroll-indicator {
         bottom: 1rem;
     }
     
